@@ -1,0 +1,84 @@
+/* ===== LAYOUT GLOBAL ===== */
+
+/* FULL WIDTH MAIN */
+.app-main {
+  width: 100%;
+  max-width: none; /* QUAN TRỌNG: bỏ giới hạn */
+  margin: 0;
+  padding: 32px 40px; /* giữ khoảng cách 2 bên */
+  box-sizing: border-box;
+}
+
+/* Optional: nếu muốn có container dùng riêng (cho page khác) */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== PAGE STRUCTURE ===== */
+
+.ix-page {
+  display: grid;
+  gap: 24px;
+}
+
+/* ===== ROUTE DOCK ===== */
+
+.route-dock {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.route-dock__link {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* ===== AUTH LAYOUT ===== */
+
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-layout__brand {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.auth-layout__content {
+  width: 100%;
+  max-width: 460px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .app-main {
+    padding: 24px 16px;
+  }
+
+  .route-dock {
+    position: static;
+    margin: 24px;
+  }
+}

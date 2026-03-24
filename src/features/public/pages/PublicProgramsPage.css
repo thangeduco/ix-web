@@ -1,0 +1,312 @@
+.public-programs-page {
+  min-height: 100vh;
+  background: #fbfbfd;
+  color: #0f172a;
+}
+
+.public-programs-page__main {
+  display: block;
+}
+
+.public-programs-page__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.public-programs-page__hero {
+  padding: 64px 0 40px;
+}
+
+.public-programs-page__container--hero {
+  text-align: center;
+}
+
+.public-programs-page__hero-title {
+  margin: 0 0 20px;
+  color: #020617;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.08;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.public-programs-page__hero-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.public-programs-page__filters {
+  margin-bottom: 8px;
+}
+
+.public-programs-page__container--filters {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.public-programs-page__filters-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.public-programs-page__filters-label {
+  margin-right: 4px;
+  color: #d96e0a;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.public-programs-page__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.public-programs-page__chip {
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.public-programs-page__chip:hover {
+  border-color: rgba(242, 127, 13, 0.45);
+  transform: translateY(-1px);
+}
+
+.public-programs-page__chip--pill {
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.public-programs-page__chip--tag {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.public-programs-page__chip.is-active {
+  border-color: #f27f0d;
+  background: #f27f0d;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(242, 127, 13, 0.18);
+}
+
+.public-programs-page__chip--tag.is-active {
+  background: rgba(242, 127, 13, 0.1);
+  color: #f27f0d;
+  border-color: rgba(242, 127, 13, 0.2);
+  box-shadow: none;
+}
+
+.public-programs-page__courses {
+  padding: 48px 0 72px;
+}
+
+.public-programs-page__grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.public-programs-page__card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.public-programs-page__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+  border-color: rgba(242, 127, 13, 0.18);
+}
+
+.public-programs-page__card-top {
+  margin-bottom: 16px;
+}
+
+.public-programs-page__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.public-programs-page__badge--primary {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.public-programs-page__badge--middle {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.public-programs-page__badge--high {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.public-programs-page__card-title {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.public-programs-page__card-description {
+  flex: 1;
+  margin: 0 0 24px;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.public-programs-page__card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.public-programs-page__card-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.public-programs-page__card-meta-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.public-programs-page__card-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #f27f0d;
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.public-programs-page__card-button:hover {
+  background: #d96e0a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(242, 127, 13, 0.2);
+}
+
+.public-programs-page__empty {
+  padding: 48px 24px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 24px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.public-programs-page__empty-title {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+.public-programs-page__empty-description {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+  .public-programs-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .public-programs-page__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .public-programs-page__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .public-programs-page__hero {
+    padding: 48px 0 32px;
+  }
+
+  .public-programs-page__container {
+    padding: 0 16px;
+  }
+
+  .public-programs-page__filters-group {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .public-programs-page__filters-label {
+    margin-right: 0;
+  }
+
+  .public-programs-page__card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .public-programs-page__card-button {
+    width: 100%;
+  }
+}
+

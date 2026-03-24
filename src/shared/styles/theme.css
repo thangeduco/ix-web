@@ -1,0 +1,25 @@
+
+@import '@/shared/components/AppHeader.css';
+@import '@/shared/components/AppFooter.css';
+@import '@/shared/components/Button.css';
+@import '@/shared/components/Card.css';
+@import '@/shared/components/InputField.css';
+@import '@/shared/components/PageHeader.css';
+@import '@/shared/components/MetricGrid.css';
+@import '@/shared/components/DataTable.css';
+@import '@/shared/components/StatusPill.css';
+
+:root {
+  --primary: #ff7a00;
+  --bg: #fbfbfd;
+  --surface: #f8fafc;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}

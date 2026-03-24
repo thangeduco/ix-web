@@ -1,0 +1,78 @@
+.homeworkgallery-page {
+  display: grid;
+  gap: 24px;
+}
+
+.homeworkgallery-page__hero-content {
+  display: grid;
+  grid-template-columns: 1.4fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.homeworkgallery-page__lead {
+  margin: 0 0 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.homeworkgallery-page__api {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.homeworkgallery-page__api code {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.homeworkgallery-page__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.homeworkgallery-page__content {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+}
+
+.homeworkgallery-page__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.homeworkgallery-page__section-head h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.homeworkgallery-page__notes {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .homeworkgallery-page__hero-content,
+  .homeworkgallery-page__content {
+    grid-template-columns: 1fr;
+  }
+
+  .homeworkgallery-page__actions {
+    justify-content: flex-start;
+  }
+}

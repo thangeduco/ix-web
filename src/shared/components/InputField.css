@@ -1,0 +1,19 @@
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+.field__label {
+  font-size: 14px;
+  font-weight: 700;
+}
+.field__input {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.field__input:focus {
+  outline: 2px solid rgba(255, 122, 0, 0.15);
+  border-color: var(--primary);
+}

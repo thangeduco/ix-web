@@ -1,0 +1,9 @@
+.public-landing-page {
+  min-height: 100vh;
+  background: #f8f7f5;
+  color: #0f172a;
+}
+
+.public-landing-page__main {
+  display: block;
+}
