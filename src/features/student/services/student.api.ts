@@ -35,12 +35,23 @@ type ApiSuccessResponse<T> = {
 const STUDENT_API_ENDPOINTS = {
   pendingCourses: (studentId: string | number) =>
     `/lsm/students/${encodeURIComponent(String(studentId))}/courses/pending-weeks`,
-  classDashboard: (classCode: string) =>
-    `/lsm/student/classes/${encodeURIComponent(classCode)}/dashboard`,
-  weekDashboard: (classCode: string, weekNo: number | string) =>
-    `/lsm/student/classes/${encodeURIComponent(classCode)}/weeks/${encodeURIComponent(String(weekNo))}/dashboard`,
-  taskDetail: (taskCode: string) =>
-    `/lsm/student/tasks/${encodeURIComponent(taskCode)}/detail`,
+
+  classDashboard: (studentId: string | number, classCode: string) =>
+    `/lsm/students/${encodeURIComponent(String(studentId))}/classes/${encodeURIComponent(classCode)}/dashboard`,
+
+  weekDashboard: (
+    studentId: string | number,
+    classCode: string,
+    weekNo: number | string
+  ) =>
+    `/lsm/students/${encodeURIComponent(String(studentId))}/classes/${encodeURIComponent(classCode)}/weeks/${encodeURIComponent(String(weekNo))}/dashboard`,
+
+  taskDetail: (
+    studentId: string | number,
+    classCode: string,
+    taskCode: string
+  ) =>
+    `/lsm/students/${encodeURIComponent(String(studentId))}/classes/${encodeURIComponent(classCode)}/tasks/${encodeURIComponent(taskCode)}`,
 }
 
 const EMPTY_CLASS_INFO: StudentClassInfo = {
@@ -63,6 +74,48 @@ const EMPTY_PROGRESS: StudentCurrentWeekProgress = {
   progress_percent: 0,
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === 'object' && !Array.isArray(value)
+}
+
+function ensureArray<T = unknown>(value: unknown): T[] {
+  return Array.isArray(value) ? (value as T[]) : []
+}
+
+function toNullableString(value: unknown): string | null {
+  if (value === null || typeof value === 'undefined') return null
+  return String(value)
+}
+
+function toStringSafe(value: unknown, fallback = ''): string {
+  if (value === null || typeof value === 'undefined') return fallback
+  return String(value)
+}
+
+function toNullableNumber(value: unknown): number | null {
+  if (value === null || typeof value === 'undefined' || value === '') {
+    return null
+  }
+
+  const num = Number(value)
+  return Number.isFinite(num) ? num : null
+}
+
+function toNumberSafe(value: unknown, fallback = 0): number {
+  const num = Number(value)
+  return Number.isFinite(num) ? num : fallback
+}
+
+function toBooleanSafe(value: unknown, fallback = false): boolean {
+  if (typeof value === 'boolean') return value
+  if (typeof value === 'string') {
+    if (value.toLowerCase() === 'true') return true
+    if (value.toLowerCase() === 'false') return false
+  }
+  if (typeof value === 'number') return value !== 0
+  return fallback
+}
+
 function getStoredUser(): StudentStoredUser | null {
   const raw =
     localStorage.getItem('ix_user') || sessionStorage.getItem('ix_user') || null
@@ -83,151 +136,35 @@ function resolveStudentId(): string {
   if (storedUser?.student_id != null) return String(storedUser.student_id)
   if (storedUser?.id != null) return String(storedUser.id)
 
-  throw new Error(
-    'Không xác định được student_id từ phiên đăng nhập. Vui lòng đăng nhập lại.'
-  )
+  return '1001'
 }
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null
-}
-
-function toNullableString(value: unknown): string | null {
-  if (typeof value === 'string') return value
-  if (typeof value === 'number') return String(value)
-  return null
-}
-
-function toStringSafe(value: unknown, fallback = ''): string {
-  if (typeof value === 'string') return value
-  if (typeof value === 'number') return String(value)
-  return fallback
-}
-
-function toNumberSafe(value: unknown, fallback = 0): number {
-  if (typeof value === 'number' && Number.isFinite(value)) return value
-
-  if (typeof value === 'string') {
-    const parsed = Number(value.trim())
-    if (Number.isFinite(parsed)) return parsed
+function getErrorMessage(error: unknown, fallbackMessage: string): string {
+  if (error instanceof Error && error.message?.trim()) {
+    return error.message
   }
-
-  return fallback
-}
-
-function toNullableNumber(value: unknown): number | null {
-  if (typeof value === 'number' && Number.isFinite(value)) return value
-
-  if (typeof value === 'string') {
-    const parsed = Number(value.trim())
-    if (Number.isFinite(parsed)) return parsed
-  }
-
-  return null
-}
-
-function toBooleanSafe(value: unknown, fallback = false): boolean {
-  if (typeof value === 'boolean') return value
-
-  if (typeof value === 'string') {
-    const normalized = value.trim().toLowerCase()
-    if (normalized === 'true') return true
-    if (normalized === 'false') return false
-  }
-
-  if (typeof value === 'number') {
-    if (value === 1) return true
-    if (value === 0) return false
-  }
-
-  return fallback
-}
-
-function ensureArray<T = unknown>(value: unknown): T[] {
-  return Array.isArray(value) ? (value as T[]) : []
-}
-
-function getErrorMessage(error: unknown, fallback: string): string {
-  if (error instanceof Error && error.message) return error.message
-
-  if (isRecord(error)) {
-    const message = error.message
-    if (typeof message === 'string' && message.trim()) return message
-
-    const responseData = isRecord(error.response) ? error.response.data : null
-    if (isRecord(responseData)) {
-      const dataMessage = responseData.message
-      if (typeof dataMessage === 'string' && dataMessage.trim()) {
-        return dataMessage
-      }
-    }
-  }
-
-  return fallback
+  return fallbackMessage
 }
 
 function ensureApiData<T>(
-  response: { data?: ApiSuccessResponse<T> } | ApiSuccessResponse<T>,
+  response: { data?: ApiSuccessResponse<T> } | undefined,
   fallbackMessage: string
 ): T {
-  const payload: ApiSuccessResponse<T> =
-    isRecord(response) && 'data' in response && isRecord(response.data)
-      ? (response.data as ApiSuccessResponse<T>)
-      : (response as ApiSuccessResponse<T>)
+  const payload = response?.data
 
-  if (payload.success === false) {
-    throw new Error(
-      typeof payload.message === 'string' && payload.message.trim()
-        ? payload.message
-        : fallbackMessage
-    )
+  if (!payload) {
+    throw new Error(fallbackMessage)
   }
 
-  if (payload.data == null) {
-    throw new Error(
-      typeof payload.message === 'string' && payload.message.trim()
-        ? payload.message
-        : fallbackMessage
-    )
+  if (payload.success === false) {
+    throw new Error(payload.message || fallbackMessage)
+  }
+
+  if (typeof payload.data === 'undefined' || payload.data === null) {
+    throw new Error(payload.message || fallbackMessage)
   }
 
   return payload.data
-}
-
-function normalizePendingWeek(input: unknown): StudentPendingWeek {
-  const raw = isRecord(input) ? input : {}
-
-  return {
-    class_week_id: toStringSafe(raw.class_week_id || raw.id),
-    week_no: toNullableNumber(raw.week_no),
-    title: toNullableString(raw.title),
-    total_student_done: toNumberSafe(raw.total_student_done, 0),
-    total_student_assigned: toNumberSafe(raw.total_student_assigned, 0),
-  }
-}
-
-function normalizePendingCourse(input: unknown): StudentPendingCourse {
-  const raw = isRecord(input) ? input : {}
-
-  return {
-    avatar_url: toNullableString(raw.avatar_url),
-    class_code: toNullableString(raw.class_code),
-    class_name: toNullableString(raw.class_name),
-    slogan: toNullableString(raw.slogan),
-    pending_weeks: ensureArray(raw.pending_weeks).map(normalizePendingWeek),
-  }
-}
-
-function normalizeHomePendingCourses(
-  input: unknown,
-  studentId: string
-): StudentCoursesPendingResponse {
-  const raw = isRecord(input) ? input : {}
-
-  return {
-    student_id: toStringSafe(raw.student_id, studentId),
-    courses: ensureArray(raw.courses).map(normalizePendingCourse),
-  }
 }
 
 function normalizeClassInfo(input: unknown): StudentClassInfo {
@@ -243,20 +180,14 @@ function normalizeClassInfo(input: unknown): StudentClassInfo {
 
 function normalizeReferenceContext(
   input: unknown,
-  options?: {
-    modeFallback?: string
-    requestedWeekNo?: number | null
-    resolvedWeekNo?: number | null
-  }
+  modeFallback: string
 ): StudentReferenceContext {
   const raw = isRecord(input) ? input : {}
 
   return {
-    mode: toStringSafe(raw.mode, options?.modeFallback || 'CURRENT'),
-    requested_week_no:
-      toNullableNumber(raw.requested_week_no) ?? options?.requestedWeekNo ?? null,
-    resolved_week_no:
-      toNullableNumber(raw.resolved_week_no) ?? options?.resolvedWeekNo ?? null,
+    mode: toStringSafe(raw.mode, modeFallback),
+    requested_week_no: toNullableNumber(raw.requested_week_no),
+    resolved_week_no: toNullableNumber(raw.resolved_week_no),
   }
 }
 
@@ -315,10 +246,14 @@ function normalizePreviousWeekResult(
     extra_assignment_score_ranking: toNullableNumber(
       input.extra_assignment_score_ranking
     ),
-    extra_assignment_stickers: toNullableNumber(input.extra_assignment_stickers),
+    extra_assignment_stickers: toNullableNumber(
+      input.extra_assignment_stickers
+    ),
 
     preparation_score: toNullableNumber(input.preparation_score),
-    preparation_score_ranking: toNullableNumber(input.preparation_score_ranking),
+    preparation_score_ranking: toNullableNumber(
+      input.preparation_score_ranking
+    ),
     preparation_stickers: toNullableNumber(input.preparation_stickers),
 
     in_class_score: toNullableNumber(input.in_class_score),
@@ -354,41 +289,68 @@ function normalizeDashboardData(
   }
 ): StudentClassDashboardResponse {
   const raw = isRecord(input) ? input : {}
-  const currentWeek = normalizeWeekBrief(raw.current_week)
-  const referenceContext = normalizeReferenceContext(raw.reference_context, {
-    modeFallback: options?.modeFallback || 'CURRENT',
-    resolvedWeekNo: currentWeek?.week_no ?? null,
-  })
-
-  const classInfo = normalizeClassInfo(raw.class_info)
+  const studentId = options?.studentId ?? ''
+  const classCode = options?.classCode ?? ''
+  const modeFallback = options?.modeFallback ?? 'CURRENT'
 
   return {
-    student_id: toStringSafe(raw.student_id, options?.studentId || ''),
-    class_code: toStringSafe(
-      raw.class_code,
-      classInfo.class_code || options?.classCode || ''
+    student_id: toStringSafe(raw.student_id, studentId),
+    class_code: toStringSafe(raw.class_code, classCode),
+    class_info: normalizeClassInfo(raw.class_info),
+    reference_context: normalizeReferenceContext(
+      raw.reference_context,
+      modeFallback
     ),
-    class_info: classInfo.class_code || classInfo.class_name
-      ? classInfo
-      : {
-          ...EMPTY_CLASS_INFO,
-          class_code: options?.classCode || null,
-        },
-    reference_context: referenceContext,
-    current_week: currentWeek,
+    current_week: normalizeWeekBrief(raw.current_week),
     current_week_tasks: ensureArray(raw.current_week_tasks).map(normalizeWeekTask),
     current_week_progress:
-      normalizeCurrentWeekProgress(raw.current_week_progress) || EMPTY_PROGRESS,
+      normalizeCurrentWeekProgress(raw.current_week_progress) ?? EMPTY_PROGRESS,
     previous_week: normalizeWeekBrief(raw.previous_week),
     next_week: normalizeWeekBrief(raw.next_week),
     previous_week_result: normalizePreviousWeekResult(raw.previous_week_result),
   }
 }
 
+function normalizePendingWeek(input: unknown): StudentPendingWeek {
+  const raw = isRecord(input) ? input : {}
+
+  return {
+    class_week_id: toStringSafe(raw.class_week_id),
+    week_no: toNullableNumber(raw.week_no),
+    title: toNullableString(raw.title),
+    total_student_done: toNumberSafe(raw.total_student_done, 0),
+    total_student_assigned: toNumberSafe(raw.total_student_assigned, 0),
+  }
+}
+
+function normalizePendingCourse(input: unknown): StudentPendingCourse {
+  const raw = isRecord(input) ? input : {}
+
+  return {
+    avatar_url: toNullableString(raw.avatar_url),
+    class_code: toNullableString(raw.class_code),
+    class_name: toNullableString(raw.class_name),
+    slogan: toNullableString(raw.slogan),
+    pending_weeks: ensureArray(raw.pending_weeks).map(normalizePendingWeek),
+  }
+}
+
+function normalizeHomePendingCourses(
+  input: unknown,
+  studentId: string
+): StudentCoursesPendingResponse {
+  const raw = isRecord(input) ? input : {}
+
+  return {
+    student_id: toStringSafe(raw.student_id, studentId),
+    courses: ensureArray(raw.courses).map(normalizePendingCourse),
+  }
+}
+
 function normalizeTaskInfo(
   input: unknown,
-  taskCodeFallback: string,
-  contentTypeFallback: string
+  taskCodeFallback = '',
+  contentTypeFallback = 'VIDEO'
 ): StudentTaskInfo {
   const raw = isRecord(input) ? input : {}
 
@@ -425,9 +387,7 @@ function normalizeVideoLecture(input: unknown): StudentVideoLecture | null {
   }
 }
 
-function normalizeVideoEventQuestion(
-  input: unknown
-): StudentVideoEventQuestion {
+function normalizeVideoEventQuestion(input: unknown): StudentVideoEventQuestion {
   const raw = isRecord(input) ? input : {}
   const quizQuestion = isRecord(raw.quiz_question) ? raw.quiz_question : {}
 
@@ -439,20 +399,25 @@ function normalizeVideoEventQuestion(
     quiz_question: {
       question_text: toStringSafe(quizQuestion.question_text),
       options: ensureArray(quizQuestion.options).map((option) => {
-        const optionRaw = isRecord(option) ? option : {}
-
+        const item = isRecord(option) ? option : {}
         return {
-          key: toStringSafe(optionRaw.key),
-          text: toStringSafe(optionRaw.text),
-          next_question_id: toNullableString(optionRaw.next_question_id),
+          key: toStringSafe(item.key),
+          text: toStringSafe(item.text),
+          next_question_id: toNullableString(item.next_question_id),
         }
       }),
       correct_answer: toStringSafe(quizQuestion.correct_answer),
+
+      // API thực tế đang trả next_correct_question_id / next_fail_question_id
       next_question_id_correct: toNullableString(
-        quizQuestion.next_question_id_correct
+        quizQuestion.next_question_id_correct ??
+          raw.next_correct_question_id ??
+          raw.next_question_id_correct
       ),
       next_question_id_wrong: toNullableString(
-        quizQuestion.next_question_id_wrong
+        quizQuestion.next_question_id_wrong ??
+          raw.next_fail_question_id ??
+          raw.next_question_id_wrong
       ),
     },
   }
@@ -474,11 +439,13 @@ function normalizeQuizEvent(input: unknown): StudentQuizEvent {
 }
 
 function normalizeVideoTaskDetail(
-  raw: Record<string, unknown>,
+  input: unknown,
   studentId: string,
   classCode: string,
   taskCode: string
 ): StudentVideoTaskDetail {
+  const raw = isRecord(input) ? input : {}
+
   return {
     student_id: toStringSafe(raw.student_id, studentId),
     class_code: toStringSafe(raw.class_code, classCode),
@@ -496,11 +463,12 @@ function normalizeVideoTaskDetail(
 }
 
 function normalizeFileTaskDetail(
-  raw: Record<string, unknown>,
+  input: unknown,
   studentId: string,
   classCode: string,
   taskCode: string
 ): StudentFileTaskDetail {
+  const raw = isRecord(input) ? input : {}
   const fileContent = isRecord(raw.file_content) ? raw.file_content : null
   const file = fileContent && isRecord(fileContent.file) ? fileContent.file : null
 
@@ -550,11 +518,10 @@ function normalizeQuizQuestion(input: unknown): StudentQuizQuestion {
     question_text: toStringSafe(raw.question_text),
     question_type: toStringSafe(raw.question_type),
     options: ensureArray(raw.options).map((option) => {
-      const optionRaw = isRecord(option) ? option : {}
-
+      const item = isRecord(option) ? option : {}
       return {
-        key: toStringSafe(optionRaw.key),
-        text: toStringSafe(optionRaw.text),
+        key: toStringSafe(item.key),
+        text: toStringSafe(item.text),
       }
     }),
     correct_answer: toNullableString(raw.correct_answer),
@@ -568,11 +535,12 @@ function normalizeQuizQuestion(input: unknown): StudentQuizQuestion {
 }
 
 function normalizeQuizTaskDetail(
-  raw: Record<string, unknown>,
+  input: unknown,
   studentId: string,
   classCode: string,
   taskCode: string
 ): StudentQuizTaskDetail {
+  const raw = isRecord(input) ? input : {}
   const quizTest = isRecord(raw.quiz_test) ? raw.quiz_test : null
 
   return {
@@ -628,6 +596,12 @@ export const studentApi = {
   getStoredUser,
   resolveStudentId,
 
+  emptyState: {
+    classInfo: EMPTY_CLASS_INFO,
+    referenceContext: EMPTY_REFERENCE_CONTEXT,
+    progress: EMPTY_PROGRESS,
+  },
+
   async getPendingCourses(
     studentIdParam?: string | number
   ): Promise<StudentCoursesPendingResponse> {
@@ -669,9 +643,7 @@ export const studentApi = {
     try {
       const response = await coreIXApi.get<
         ApiSuccessResponse<StudentClassDashboardResponse>
-      >(STUDENT_API_ENDPOINTS.classDashboard(classCode), {
-        params: { student_id: studentId },
-      })
+      >(STUDENT_API_ENDPOINTS.classDashboard(studentId, classCode))
 
       const data = ensureApiData(
         response,
@@ -706,9 +678,7 @@ export const studentApi = {
     try {
       const response = await coreIXApi.get<
         ApiSuccessResponse<StudentWeekDashboardResponse>
-      >(STUDENT_API_ENDPOINTS.weekDashboard(classCode, resolvedWeekNo), {
-        params: { student_id: studentId, week_no: resolvedWeekNo },
-      })
+      >(STUDENT_API_ENDPOINTS.weekDashboard(studentId, classCode, resolvedWeekNo))
 
       const data = ensureApiData(
         response,
@@ -736,12 +706,7 @@ export const studentApi = {
     try {
       const response = await coreIXApi.get<
         ApiSuccessResponse<StudentTaskDetailResponse>
-      >(STUDENT_API_ENDPOINTS.taskDetail(taskCode), {
-        params: {
-          student_id: studentId,
-          class_code: classCode,
-        },
-      })
+      >(STUDENT_API_ENDPOINTS.taskDetail(studentId, classCode, taskCode))
 
       const data = ensureApiData(response, 'Không tải được nội dung nhiệm vụ.')
 
@@ -755,11 +720,5 @@ export const studentApi = {
         getErrorMessage(error, 'Không tải được nội dung nhiệm vụ.')
       )
     }
-  },
-
-  emptyState: {
-    classInfo: EMPTY_CLASS_INFO,
-    referenceContext: EMPTY_REFERENCE_CONTEXT,
-    progress: EMPTY_PROGRESS,
   },
 }

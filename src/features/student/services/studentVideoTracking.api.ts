@@ -21,6 +21,19 @@ type ApiSuccessResponse<T> = {
   data?: T
 }
 
+const VIDEO_TRACKING_ENDPOINTS = {
+  START_SESSION: '/lsm/video-sessions/start',
+  HEARTBEAT_SESSION: '/lsm/video-sessions/heartbeat',
+  PAUSE_SESSION: '/lsm/video-sessions/pause',
+  RESUME_SESSION: '/lsm/video-sessions/resume',
+  SEEK_SESSION: '/lsm/video-sessions/seek',
+  END_SESSION: '/lsm/video-sessions/end',
+  OPEN_QUIZ_EVENT: '/lsm/video-quiz-events/open',
+  CLOSE_QUIZ_EVENT: '/lsm/video-quiz-events/close',
+  ANSWER_QUIZ_EVENT: '/lsm/video-quiz-events/answer',
+  SUBMIT_QUIZ_EVENT: '/lsm/video-quiz-events/submit',
+} as const
+
 function ensureApiData<T>(
   response: { data?: ApiSuccessResponse<T> } | undefined,
   fallbackMessage: string
@@ -47,7 +60,7 @@ export const studentVideoTrackingApi = {
     payload: StudentStartVideoSessionPayload
   ): Promise<StudentVideoSession> {
     const response = await coreIXApi.post<ApiSuccessResponse<StudentVideoSession>>(
-      '/api/v1/lsm/video-sessions/start',
+      VIDEO_TRACKING_ENDPOINTS.START_SESSION,
       payload
     )
 
@@ -55,17 +68,28 @@ export const studentVideoTrackingApi = {
   },
 
   async heartbeatVideoSession(
-  payload: StudentHeartbeatVideoSessionPayload
-): Promise<boolean> {
-  // tạm thời disable API call
-  return true
-},
+    payload: StudentHeartbeatVideoSessionPayload
+  ): Promise<boolean> {
+    // Tạm thời disable API call như logic hiện tại.
+    // Khi backend heartbeat sẵn sàng, chỉ cần mở lại đoạn code bên dưới.
+    void payload
+    return true
+
+    /*
+    const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
+      VIDEO_TRACKING_ENDPOINTS.HEARTBEAT_SESSION,
+      payload
+    )
+
+    return ensureApiData(response, 'Không thể heartbeat video session.')
+    */
+  },
 
   async pauseVideoSession(
     payload: StudentPauseVideoSessionPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-sessions/pause',
+      VIDEO_TRACKING_ENDPOINTS.PAUSE_SESSION,
       payload
     )
 
@@ -76,7 +100,7 @@ export const studentVideoTrackingApi = {
     payload: StudentResumeVideoSessionPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-sessions/resume',
+      VIDEO_TRACKING_ENDPOINTS.RESUME_SESSION,
       payload
     )
 
@@ -87,7 +111,7 @@ export const studentVideoTrackingApi = {
     payload: StudentSeekVideoSessionPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-sessions/seek',
+      VIDEO_TRACKING_ENDPOINTS.SEEK_SESSION,
       payload
     )
 
@@ -98,7 +122,7 @@ export const studentVideoTrackingApi = {
     payload: StudentEndVideoSessionPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-sessions/end',
+      VIDEO_TRACKING_ENDPOINTS.END_SESSION,
       payload
     )
 
@@ -108,10 +132,9 @@ export const studentVideoTrackingApi = {
   async openVideoQuizEvent(
     payload: StudentOpenVideoQuizEventPayload
   ): Promise<StudentVideoQuizAttempt> {
-    const response = await coreIXApi.post<ApiSuccessResponse<StudentVideoQuizAttempt>>(
-      '/api/v1/lsm/video-quiz-events/open',
-      payload
-    )
+    const response = await coreIXApi.post<
+      ApiSuccessResponse<StudentVideoQuizAttempt>
+    >(VIDEO_TRACKING_ENDPOINTS.OPEN_QUIZ_EVENT, payload)
 
     return ensureApiData(response, 'Không thể mở video quiz event.')
   },
@@ -120,7 +143,7 @@ export const studentVideoTrackingApi = {
     payload: StudentCloseVideoQuizEventPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-quiz-events/close',
+      VIDEO_TRACKING_ENDPOINTS.CLOSE_QUIZ_EVENT,
       payload
     )
 
@@ -131,7 +154,7 @@ export const studentVideoTrackingApi = {
     payload: StudentAnswerVideoQuizEventPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-quiz-events/answer',
+      VIDEO_TRACKING_ENDPOINTS.ANSWER_QUIZ_EVENT,
       payload
     )
 
@@ -142,7 +165,7 @@ export const studentVideoTrackingApi = {
     payload: StudentSubmitVideoQuizEventPayload
   ): Promise<boolean> {
     const response = await coreIXApi.post<ApiSuccessResponse<boolean>>(
-      '/api/v1/lsm/video-quiz-events/submit',
+      VIDEO_TRACKING_ENDPOINTS.SUBMIT_QUIZ_EVENT,
       payload
     )
 

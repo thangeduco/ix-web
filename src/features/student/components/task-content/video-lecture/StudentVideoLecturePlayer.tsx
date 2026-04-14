@@ -78,13 +78,6 @@ export function StudentVideoLecturePlayer({
 }: StudentVideoLecturePlayerProps) {
   return (
     <div className="student-video-task__player-wrap">
-      <div className="student-video-task__meta-row">
-        <span className="student-video-task__meta-chip">Lecture Video</span>
-        <span className="student-video-task__meta-text">
-          Task code: {taskCode || 'THANGDD_TODO'}
-        </span>
-      </div>
-
       <div className="student-video-task__video-card">
         {isYoutubeVideo && youtubeVideoId ? (
           <StudentYoutubePlayer
