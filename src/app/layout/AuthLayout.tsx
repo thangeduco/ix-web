@@ -1,3 +1,4 @@
+// src/app/layout/AuthLayout.tsx
 
 import { Outlet, Link } from 'react-router-dom'
 

@@ -1,3 +1,4 @@
+// src/features/course/pages/CourseListPage.tsx
 import './CourseListPage.css'
 import { Card } from '@/shared/components/Card'
 import { Button } from '@/shared/components/Button'

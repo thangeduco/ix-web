@@ -1,3 +1,4 @@
+// src/shared/components/AppHeader.tsx
 import { NavLink } from 'react-router-dom'
 import './AppHeader.css'
 

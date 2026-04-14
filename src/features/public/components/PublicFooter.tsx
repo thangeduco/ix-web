@@ -1,3 +1,4 @@
+// src/features/public/components/PublicFooter.tsx
 import './PublicFooter.css'
 
 type FooterLink = {

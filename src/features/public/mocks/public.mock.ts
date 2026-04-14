@@ -1,3 +1,4 @@
+// src/features/public/mocks/public.mock.ts
 import type { PublicPageData, PublicCourseTab } from '../types/public.types'
 
 type PublicCourse = PublicCourseTab['courses'][number]

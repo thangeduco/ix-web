@@ -1,0 +1,48 @@
+.student-video-task__sidebar {
+  display: grid;
+  gap: 18px;
+}
+
+.student-video-task__section-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(242, 127, 13, 0.1);
+  color: #c2410c;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.student-video-task__info-list {
+  display: grid;
+  gap: 14px;
+}
+
+.student-video-task__tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 247, 237, 0.82);
+  border: 1px solid rgba(251, 146, 60, 0.24);
+}
+
+.student-video-task__tip-card .material-symbols-outlined {
+  color: #f27f0d;
+}
+
+.student-video-task__tip-card p,
+.student-video-task__tip-card strong {
+  margin: 0;
+}
+
+.student-video-task__tip-card p {
+  margin-top: 4px;
+  color: #475569;
+  line-height: 1.6;
+}

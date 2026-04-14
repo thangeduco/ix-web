@@ -1,3 +1,4 @@
+// src/features/public/pages/CoursePage.tsx
 import './CoursePage.css'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'

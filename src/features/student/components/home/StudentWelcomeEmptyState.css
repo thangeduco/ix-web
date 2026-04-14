@@ -1,0 +1,162 @@
+/*src/features/student/components/home/StudentWelcomeEmptyState.css*/
+.student-welcome-empty {
+  width: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top right, rgba(242, 127, 13, 0.08), transparent 30%),
+    radial-gradient(circle at left center, rgba(14, 165, 233, 0.08), transparent 24%),
+    #fbfbfd;
+  padding: 36px 0 80px;
+}
+
+.student-welcome-empty__container {
+  width: 96%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.student-welcome-empty__card {
+  padding: 40px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.student-welcome-empty__section + .student-welcome-empty__section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.student-welcome-empty__eyebrow {
+  color: #0f172a;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.student-welcome-empty__display-name {
+  display: inline-block;
+  color: #f27f0d;
+  padding: 0 4px;
+  text-shadow: 0 6px 18px rgba(242, 127, 13, 0.16);
+}
+
+.student-welcome-empty__section--notice {
+  border-radius: 24px;
+  background: rgba(14, 165, 233, 0.05);
+  padding: 24px;
+  border: 1px solid rgba(14, 165, 233, 0.12);
+}
+
+.student-welcome-empty__section-title {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.student-welcome-empty__section--actions {
+  border-radius: 24px;
+  background: rgba(255, 247, 237, 0.9);
+  padding: 24px;
+  border: 1px solid rgba(251, 146, 60, 0.14);
+}
+
+.student-welcome-empty__suggestions {
+  display: grid;
+  gap: 10px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+.student-welcome-empty__suggestions p {
+  margin: 0;
+}
+
+.student-welcome-empty__final-text {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.student-welcome-empty__buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.student-welcome-empty__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 800;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.student-welcome-empty__button:hover {
+  transform: translateY(-1px);
+}
+
+.student-welcome-empty__button--primary {
+  background: #f27f0d;
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(242, 127, 13, 0.22);
+}
+
+.student-welcome-empty__button--primary:hover {
+  opacity: 0.94;
+}
+
+.student-welcome-empty__button--secondary {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+}
+
+.student-welcome-empty__button--secondary:hover {
+  background: #f8fafc;
+}
+
+@media (max-width: 768px) {
+  .student-welcome-empty {
+    padding: 24px 0 64px;
+  }
+
+  .student-welcome-empty__container {
+    padding: 0 16px;
+  }
+
+  .student-welcome-empty__card {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .student-welcome-empty__section--notice,
+  .student-welcome-empty__section--actions {
+    padding: 18px;
+  }
+
+  .student-welcome-empty__buttons {
+    flex-direction: column;
+  }
+
+  .student-welcome-empty__button {
+    width: 100%;
+  }
+}

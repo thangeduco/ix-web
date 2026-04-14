@@ -1,3 +1,4 @@
+// src/shared/components/StatusPill.tsx
 
 import './StatusPill.css'
 import clsx from 'clsx'

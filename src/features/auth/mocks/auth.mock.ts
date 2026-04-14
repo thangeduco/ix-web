@@ -1,3 +1,4 @@
+// src/features/auth/mocks/auth.mock.ts
 export const authMock = {
   hero: {
     badge: 'iX Education',

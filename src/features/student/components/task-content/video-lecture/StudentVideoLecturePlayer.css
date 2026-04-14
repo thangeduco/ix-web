@@ -1,0 +1,49 @@
+.student-video-task__meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.student-video-task__meta-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(242, 127, 13, 0.12);
+  color: #c2410c;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.student-video-task__meta-text {
+  color: #64748b;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.student-video-task__player-wrap {
+  display: grid;
+  gap: 18px;
+}
+
+.student-video-task__video-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #020617;
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+}
+
+.student-video-task__video {
+  display: block;
+  width: 100%;
+  height: 560px;
+  background: #000;
+}
+
+.student-video-task__iframe {
+  border: 0;
+}

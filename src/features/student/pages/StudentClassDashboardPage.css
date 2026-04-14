@@ -1,0 +1,10 @@
+/*src/features/student/pages/StudentClassDashboardPage.css*/
+.student-class-dashboard-page {
+  min-height: 100vh;
+  background: #fbfbfd;
+  color: #0f172a;
+}
+
+.student-class-dashboard-page__main {
+  display: block;
+}

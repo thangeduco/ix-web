@@ -1,0 +1,184 @@
+Json khi content_type là VIDEO:
+{
+  "student_id": "1001",
+  "class_code": "CLASS_2",
+  "task_code": "CODE3",
+  "content_type": "VIDEO",
+  "class_info": {
+    "avatar_url": "https://example.com/math1.jpg",
+    "class_name": "Lớp iX3A2",
+    "class_code": "CLASS_2",
+    "slogan": "Học chắc từ gốc – Giỏi Toán tự nhiên"
+  },
+  "task_info": {
+    "task_code": "CODE3",
+    "task_title": "Phiếu tự luận: Rút gọn phân số",
+    "content_type": "VIDEO"
+  },
+  "task_statistics": {
+    "section_type": "PREPARE_LESSON_FOR_CLASS",
+    "class_id": "201",
+    "class_week_id": "5",
+    "total_student_assigned": 1,
+    "total_student_completed": 1,
+    "highest_score": null
+  },
+  "video_title": "Xem video ôn tập số tự nhiên",
+  "video_id": "1",
+  "lecture_video": {
+    "id": "1",
+    "title": "Video số hữu tỉ - Bài 1",
+    "description": "Giới thiệu khái niệm số hữu tỉ",
+    "video_url": "https://video.edu.vn/math7/w1_v1.mp4",
+    "thumbnail_url": "https://img.edu.vn/math7/w1_v1.jpg",
+    "duration_seconds": 840
+  },
+  "quiz_events": [
+    {
+      "id": "1",
+      "lecture_video_id": "1",
+      "title": "Event kiểm tra 1",
+      "description": "Kiểm tra nhanh sau phần giới thiệu",
+      "trigger_second": 120,
+      "pause_video": true,
+      "is_required": true,
+      "questions": [
+        {
+          "id": "1",
+          "is_start_question": true,
+          "display_order": 1,
+          "score": 1,
+          "quiz_question": {
+            "question_text": "1/2 + 1/3 bằng bao nhiêu?",
+            "options": [
+              { "key": "A", "text": "2/5" },
+              { "key": "B", "text": "5/6" },
+              { "key": "C", "text": "1" }
+            ],
+            "correct_answer": "B"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+JSON khi content_type là FILE:
+{
+  "success": true,
+  "message": "OK",
+  "data": {
+    "student_id": "1001",
+    "class_code": "CLASS_2",
+    "task_code": "CODE4",
+    "content_type": "FILE",
+    "class_info": {
+      "avatar_url": "https://example.com/math1.jpg",
+      "class_name": "Lớp iX3A2",
+      "class_code": "CLASS_2",
+      "slogan": "Học chắc từ gốc – Giỏi Toán tự nhiên"
+    },
+    "task_info": {
+      "task_code": "CODE4",
+      "task_title": "Mini test: Phân số",
+      "content_type": "FILE"
+    },
+    "task_statistics": {
+      "section_type": "OFFLINE_IN_CLASSROOM",
+      "class_id": "201",
+      "class_week_id": "5",
+      "total_student_assigned": 1,
+      "total_student_completed": 1,
+      "highest_score": null
+    },
+    "file_content": {
+      "content_id": "1",
+      "file": {
+        "file_url": "https://cdn.edu.vn/files/in_class_sheet_w1.pdf",
+        "file_name": "in_class_sheet_w1.pdf"
+      }
+    }
+  }
+}
+
+JSON khi content_type là quiz test
+{
+  "success": true,
+  "message": "OK",
+  "data": {
+    "student_id": "1001",
+    "class_code": "CLASS_2",
+    "task_code": "CODE8",
+    "content_type": "QUIZ_TEST",
+    "class_info": {
+      "avatar_url": "https://example.com/math1.jpg",
+      "class_name": "Lớp iX3A2",
+      "class_code": "CLASS_2",
+      "slogan": "Học chắc từ gốc – Giỏi Toán tự nhiên"
+    },
+    "task_info": {
+      "task_code": "CODE8",
+      "task_title": "Xem video: Phân số bằng nhau",
+      "content_type": "QUIZ_TEST"
+    },
+    "task_statistics": {
+      "section_type": "OFFLINE_IN_CLASSROOM",
+      "class_id": "201",
+      "class_week_id": "5",
+      "total_student_assigned": 1,
+      "total_student_completed": 1,
+      "highest_score": null
+    },
+    "quiz_test": {
+      "content_id": "2",
+      "title": "Quiz tuần 2 trên lớp",
+      "quiz_test": {
+        "id": "2",
+        "title": "Quiz homework tuần 1",
+        "description": "Quiz bài tập về nhà tuần 1",
+        "quiz_type": "HOMEWORK",
+        "time_limit_minutes": 20,
+        "max_attempts": 3,
+        "passing_score": 7,
+        "shuffle_question": true,
+        "shuffle_option": true
+      },
+      "questions": [
+        {
+          "id": "3",
+          "question_text": "2^3 bằng bao nhiêu?",
+          "question_type": "SINGLE_CHOICE",
+          "options": [
+            { "key": "A", "text": "6" },
+            { "key": "B", "text": "8" },
+            { "key": "C", "text": "9" }
+          ],
+          "correct_answer": "B",
+          "explanation": "2 nhân 2 nhân 2 bằng 8.",
+          "default_score": 1,
+          "difficulty_level": "easy",
+          "display_order": 1,
+          "score": 1,
+          "is_required": true
+        },
+        {
+          "id": "4",
+          "question_text": "Biểu thức nào là đơn thức?",
+          "question_type": "SINGLE_CHOICE",
+          "options": [
+            { "key": "A", "text": "x+1" },
+            { "key": "B", "text": "2xy" },
+            { "key": "C", "text": "x-3" }
+          ],
+          "correct_answer": "B",
+          "explanation": "2xy là đơn thức.",
+          "default_score": 1,
+          "difficulty_level": "medium",
+          "display_order": 2,
+          "score": 1,
+          "is_required": true
+        }
+      ]
+    }
+  }
+}

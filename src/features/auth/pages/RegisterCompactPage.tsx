@@ -1,3 +1,4 @@
+// src/features/auth/pages/RegisterCompactPage.tsx
 import './RegisterCompactPage.css'
 import { Card } from '@/shared/components/Card'
 import { Button } from '@/shared/components/Button'

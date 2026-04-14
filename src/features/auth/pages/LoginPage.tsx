@@ -1,3 +1,4 @@
+// src/features/auth/pages/LoginPage.tsx
 import './LoginPage.css'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -55,6 +56,65 @@ function extractUser(response: LoginResponse) {
   return response?.data?.user || response?.user || null
 }
 
+function normalizeRoleCode(response: LoginResponse): string | null {
+  const user = extractUser(response)
+
+  const rawRole =
+    user?.role_code ||
+    user?.role ||
+    response?.data?.user?.role_code ||
+    response?.data?.user?.role ||
+    null
+
+  if (!rawRole) return null
+
+  return String(rawRole).trim().toLowerCase()
+}
+
+function getRedirectPathByRole(response: LoginResponse): string {
+  const roleCode = normalizeRoleCode(response)
+
+  switch (roleCode) {
+    case 'student':
+      return '/student/home'
+    case 'parent':
+      return '/dashboard/parent'
+    case 'teacher':
+      return '/teacher/dashboard'
+    case 'admin':
+      return '/'
+    default:
+      return '/'
+  }
+}
+
+function persistAuth(token: string, user: unknown, rememberMe: boolean) {
+  if (rememberMe) {
+    localStorage.setItem('ix_access_token', token)
+
+    if (user) {
+      localStorage.setItem('ix_user', JSON.stringify(user))
+    } else {
+      localStorage.removeItem('ix_user')
+    }
+
+    sessionStorage.removeItem('ix_access_token')
+    sessionStorage.removeItem('ix_user')
+    return
+  }
+
+  sessionStorage.setItem('ix_access_token', token)
+
+  if (user) {
+    sessionStorage.setItem('ix_user', JSON.stringify(user))
+  } else {
+    sessionStorage.removeItem('ix_user')
+  }
+
+  localStorage.removeItem('ix_access_token')
+  localStorage.removeItem('ix_user')
+}
+
 export function LoginPage() {
   const navigate = useNavigate()
 
@@ -97,27 +157,10 @@ export function LoginPage() {
         throw new Error('Không nhận được access token từ hệ thống.')
       }
 
-      if (rememberMe) {
-        localStorage.setItem('ix_access_token', token)
+      persistAuth(token, user, rememberMe)
 
-        if (user) {
-          localStorage.setItem('ix_user', JSON.stringify(user))
-        }
-
-        sessionStorage.removeItem('ix_access_token')
-        sessionStorage.removeItem('ix_user')
-      } else {
-        sessionStorage.setItem('ix_access_token', token)
-
-        if (user) {
-          sessionStorage.setItem('ix_user', JSON.stringify(user))
-        }
-
-        localStorage.removeItem('ix_access_token')
-        localStorage.removeItem('ix_user')
-      }
-
-      navigate('/')
+      const redirectPath = getRedirectPathByRole(response)
+      navigate(redirectPath, { replace: true })
     } catch (error: any) {
       console.error('Login failed:', error)
       setErrorMessage(getErrorMessage(error))
@@ -170,7 +213,7 @@ export function LoginPage() {
 
                   <Link
                     className="login-page__forgot-link"
-                    to="/quen-mat-khau"
+                    to="/auth/forgot-password"
                   >
                     Quên mật khẩu?
                   </Link>
@@ -237,7 +280,7 @@ export function LoginPage() {
 
             <div className="login-page__register">
               <span>Chưa có tài khoản? </span>
-              <Link className="login-page__register-link" to="/dang-ky">
+              <Link className="login-page__register-link" to="/register">
                 Đăng ký ngay
               </Link>
             </div>

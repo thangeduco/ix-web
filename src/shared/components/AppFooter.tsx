@@ -1,3 +1,4 @@
+// src/shared/components/AppFooter.tsx
 
 import './AppFooter.css'
 

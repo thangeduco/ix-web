@@ -1,0 +1,37 @@
+.student-task-content-page {
+  min-height: 100vh;
+  background: #fbfbfd;
+}
+
+.student-task-content-page__main {
+  display: block;
+}
+
+.student-task-content-page__state-card {
+  width: min(720px, calc(100% - 32px));
+  margin: 32px auto 72px;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.86);
+  background: #fff;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.student-task-content-page__state-card--error {
+  border-color: rgba(248, 113, 113, 0.35);
+  background: rgba(254, 242, 242, 0.8);
+}
+
+.student-task-content-page__state-card button {
+  margin-top: 12px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #f27f0d;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}

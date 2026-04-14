@@ -1,3 +1,4 @@
+// src/app/layout/MainLayout.tsx
 
 import { Outlet, NavLink } from 'react-router-dom'
 import { AppHeader } from '@/shared/components/AppHeader'

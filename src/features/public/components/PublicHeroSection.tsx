@@ -1,3 +1,4 @@
+// src/features/public/components/PublicHeroSection.tsx
 import './PublicHeroSection.css'
 import type { PublicHeroData } from '../types/public.types'
 

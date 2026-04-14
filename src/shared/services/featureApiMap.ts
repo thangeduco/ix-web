@@ -1,3 +1,4 @@
+// src/shared/services/featureApiMap.ts
 export const featureApiMap = {
   home: {"primary": "/ccc/courses", "secondary": ["/ccc/courses", "/ccc/courses/:courseId"]},
   auth: {"primary": "/iam/auth/register", "secondary": ["/iam/auth/register", "/iam/auth/password-reset/request"]},

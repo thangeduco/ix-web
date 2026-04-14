@@ -1,3 +1,4 @@
+// src/features/public/pages/PublicLandingPage.tsx
 import './PublicLandingPage.css'
 import { useEffect, useState } from 'react'
 import { publicApi } from '../services/public.api'

@@ -1,3 +1,4 @@
+// src/features/public/components/PublicTestimonialsSection.tsx
 import { useMemo, useState } from 'react'
 import './PublicTestimonialsSection.css'
 import type { PublicTestimonial } from '../types/public.types'

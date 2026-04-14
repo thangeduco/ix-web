@@ -1,0 +1,10 @@
+/*src/features/student/pages/StudentWeekDashboardPage.css*/
+.student-week-dashboard-page {
+  min-height: 100vh;
+  background: #fbfbfd;
+  color: #0f172a;
+}
+
+.student-week-dashboard-page__main {
+  display: block;
+}

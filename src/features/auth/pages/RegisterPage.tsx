@@ -1,3 +1,4 @@
+// src/features/auth/pages/RegisterPage.tsx
 import './RegisterPage.css'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'

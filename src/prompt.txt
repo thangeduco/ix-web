@@ -1,0 +1,14 @@
+find ./src/features/student -type f -print0 | xargs -0 -I {} sh -c 'echo "===== {} ====="; cat "{}"' > abc.txt
+
+
+
+
+
+File abc.txt là toàn bộ code phần module student của iX-web:
+Ở student.api.ts để xác định pendingCourses tôi sử dụng API dưới của backend.
+'http://localhost:3000/api/v1/lsm/students/1001/courses/pending-weeks
+
+Giúp tôi sinh lại code file student.api.ts
+
+
+

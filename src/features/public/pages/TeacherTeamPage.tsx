@@ -1,3 +1,4 @@
+// src/features/public/pages/TeacherTeamPage.tsx
 import './TeacherTeamPage.css'
 import { PublicHeader } from '../components/PublicHeader'
 import { PublicFooter } from '../components/PublicFooter'

@@ -1,3 +1,4 @@
+// src/features/public/pages/PublicProgramsPage.tsx
 import './PublicProgramsPage.css'
 import { useEffect, useMemo, useState } from 'react'
 import { publicApi } from '../services/public.api'

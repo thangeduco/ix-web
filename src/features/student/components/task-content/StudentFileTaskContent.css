@@ -1,0 +1,205 @@
+.student-file-task__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-file-task__section-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(242, 127, 13, 0.12);
+  color: #c2410c;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.student-file-task__layout {
+  display: grid;
+  gap: 24px;
+}
+
+.student-file-task__assignment-card,
+.student-file-task__submit-card,
+.student-file-task__note-card {
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.86);
+}
+
+.student-file-task__assignment-card {
+  padding: 24px;
+  background: #fff;
+}
+
+.student-file-task__download-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: rgba(254, 242, 242, 0.8);
+  border: 1px solid rgba(248, 113, 113, 0.16);
+}
+
+.student-file-task__download-icon {
+  font-size: 48px;
+  color: #dc2626;
+}
+
+.student-file-task__download-link {
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.student-file-task__download-link:hover {
+  color: #dc2626;
+}
+
+.student-file-task__download-caption {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.student-file-task__submit-card {
+  padding: 24px;
+  background: #fff;
+}
+
+.student-file-task__submit-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: #0f172a;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.student-file-task__submit-title .material-symbols-outlined {
+  color: #f27f0d;
+}
+
+.student-file-task__upload-dropzone {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 28px 18px;
+  border-radius: 22px;
+  border: 2px dashed rgba(203, 213, 225, 0.96);
+  background: #f8fafc;
+  cursor: pointer;
+  text-align: center;
+}
+
+.student-file-task__upload-dropzone .material-symbols-outlined {
+  font-size: 40px;
+  color: #f27f0d;
+}
+
+.student-file-task__upload-dropzone strong {
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.student-file-task__upload-dropzone p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.student-file-task__file-input {
+  display: none;
+}
+
+.student-file-task__selected-files {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.student-file-task__selected-file-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+}
+
+.student-file-task__selected-file-item .material-symbols-outlined {
+  color: #2563eb;
+}
+
+.student-file-task__submit-btn {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f27f0d, #fb923c);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 16px 28px rgba(242, 127, 13, 0.16);
+}
+
+.student-file-task__security-text {
+  margin: 14px 0 0;
+  color: #64748b;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.student-file-task__sidebar {
+  display: grid;
+  gap: 18px;
+}
+
+.student-file-task__sidebar-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(242, 127, 13, 0.12);
+  color: #c2410c;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.student-file-task__note-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  background: rgba(255, 247, 237, 0.82);
+  border-color: rgba(251, 146, 60, 0.24);
+}
+
+.student-file-task__note-card .material-symbols-outlined {
+  color: #f27f0d;
+}
+
+.student-file-task__note-card strong,
+.student-file-task__note-card p {
+  margin: 0;
+}
+
+.student-file-task__note-card p {
+  margin-top: 4px;
+  color: #475569;
+  line-height: 1.65;
+}

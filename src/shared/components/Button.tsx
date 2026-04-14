@@ -1,3 +1,4 @@
+// src/shared/components/Button.tsx
 
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react'
 import clsx from 'clsx'

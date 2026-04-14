@@ -1,3 +1,4 @@
+// src/features/course/services/course.api.ts
 import { http } from '@/shared/services/http'
 
 export const courseApi = {

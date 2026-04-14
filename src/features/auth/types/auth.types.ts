@@ -1,3 +1,4 @@
+// src/features/auth/types/auth.types.ts
 export type AuthMetric = {
   label: string
   value: string

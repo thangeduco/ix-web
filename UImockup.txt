@@ -1,0 +1,737 @@
+Trang lecture video ứng với content_type là VIDEO:
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IX Education - Bài học trực tuyến</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF7A00",
+                        "amber-deep": "#D97706",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800 px-6 py-3">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="flex-shrink-0 cursor-pointer">
+<div class="bg-[#f27f0d] text-white px-3 py-1 rounded-lg font-black text-xl tracking-tighter">iX</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors p-2 relative">
+                notifications
+                <span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-semibold">Minh Phan</p>
+<p class="text-[10px] text-slate-500">Học sinh lớp 6</p>
+</div>
+<div class="size-9 rounded-full bg-slate-200 overflow-hidden ring-2 ring-primary/20" data-alt="User profile avatar circle">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARYF2QhLsLzhS879JTcM963dd8Cjj9Vap0b8oZGet_YFOG9gVlfHXVNiu9SbWrqiYslydDiXwfWjau60hzILINiNFZg6jZzw80mMQQnS1nyrU68Tt28fWW8gPNdl2ktEuiBqJNFsytPXa09sokID2WBjiAPi8dGxqGclxirWVBcM41djJ7XPqCflxcriXKdN8PLqrMvjnWf9tcabFz48dXtIgMVEvB6vbcOXOn0CWkF1Kh8gX3sBhBgUXH0yz9BYsvNdqCk8MAPME"/>
+</div>
+<button class="material-symbols-outlined text-slate-500 hover:text-red-500 transition-colors p-2 ml-2">
+                    logout
+                </button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto p-6 lg:p-10">
+<!-- Page Header (below main nav) -->
+<div class="relative flex items-center justify-between mb-10">
+<div class="flex-shrink-0">
+<button class="flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-amber-600/20">
+<span class="material-symbols-outlined text-lg">calendar_month</span>
+                Về trang tuần học
+            </button>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-4 text-center">
+<div class="size-14 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center overflow-hidden">
+<img alt="Class Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARYF2QhLsLzhS879JTcM963dd8Cjj9Vap0b8oZGet_YFOG9gVlfHXVNiu9SbWrqiYslydDiXwfWjau60hzILINiNFZg6jZzw80mMQQnS1nyrU68Tt28fWW8gPNdl2ktEuiBqJNFsytPXa09sokID2WBjiAPi8dGxqGclxirWVBcM41djJ7XPqCflxcriXKdN8PLqrMvjnWf9tcabFz48dXtIgMVEvB6vbcOXOn0CWkF1Kh8gX3sBhBgUXH0yz9BYsvNdqCk8MAPME"/>
+</div>
+<div class="text-left">
+<h1 class="text-xl font-bold text-slate-900 dark:text-white leading-tight">Lớp học 6A1</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Học tập sáng tạo, bứt phá tư duy</p>
+</div>
+</div>
+<div class="w-[150px] invisible"></div> <!-- Spacer for balance -->
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Main Content: Video Player Area -->
+<div class="flex-1 space-y-6">
+<div class="relative group rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video ring-1 ring-white/10">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Mathematical equations on a blackboard background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvw7rD5P3CPCKsNFg4yOaGdF8a8SMB3Thvd7eSxcPI1BbBWfg7RkjniLrc6WI0ISrvPcD-26Liumyl1MwoVdOULKFd8TsfDuT5aOR2Z659kt9_Zd-itsA1e-TquNEfrngtqRKNc4ZaCKfFYu3wt8108fVgjvvOGHjxXziGlYJgyTj0D4mCX4Xy4gq8XJ4tCCMfTanSGoi4yFsUHLhd9aCIQFeJ6cisUlggpTvyx2uu9WR_2NDIkefcVM8ypUp-lm6icAZ4JduXLB4');"></div>
+<!-- Overlay Question -->
+<div class="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 sm:p-8">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl transform translate-y-0 transition-all duration-500">
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-4">Câu hỏi nhanh</span>
+<h3 class="text-lg font-bold mb-6">Số nào sau đây là số nguyên tố?</h3>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary transition-all group/opt">
+<span class="font-medium">A. Số 9</span>
+<span class="size-5 rounded-full border-2 border-slate-200 group-hover/opt:border-primary transition-colors"></span>
+</button>
+<button class="w-full flex items-center justify-between p-4 rounded-xl border-2 border-primary bg-primary/5 group/opt">
+<span class="font-bold text-primary">B. Số 13</span>
+<span class="size-5 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xs">done</span>
+</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 hover:border-primary transition-all group/opt">
+<span class="font-medium">C. Số 15</span>
+<span class="size-5 rounded-full border-2 border-slate-200 group-hover/opt:border-primary transition-colors"></span>
+</button>
+</div>
+<button class="w-full mt-6 py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all">
+                            Tiếp tục bài học
+                        </button>
+</div>
+</div>
+<!-- Video Controls Bar -->
+<div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex flex-col gap-4">
+<div class="w-full h-1.5 bg-white/20 rounded-full relative cursor-pointer">
+<div class="absolute top-0 left-0 h-full w-1/3 bg-primary rounded-full"></div>
+<div class="absolute top-1/2 left-1/3 -translate-y-1/2 size-4 bg-white rounded-full shadow-lg scale-0 group-hover:scale-100 transition-transform"></div>
+</div>
+<div class="flex items-center justify-between text-white">
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined hover:text-primary transition-colors text-3xl">play_arrow</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors text-2xl">volume_up</button>
+<span class="text-sm font-medium tabular-nums">04:12 / 12:45</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined hover:text-primary transition-colors">closed_caption</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">settings</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">fullscreen</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="w-full lg:w-[400px] shrink-0 space-y-6">
+<!-- Section 1: Course Content Hierarchy -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col">
+<div class="p-2"><!-- Preparation Section (Now at the top) -->
+<div class="px-4 pt-4 pb-3 mb-4 border-b border-slate-50">
+<h2 class="text-xs font-black text-primary uppercase tracking-widest mb-4">C. Chuẩn bị bài trước khi đi học</h2>
+<div class="pl-4">
+<h3 class="text-sm font-bold text-slate-800 dark:text-white uppercase mb-4">1. BÀI 1: KHÁI NIỆM VỀ SỐ NGUYÊN TỐ</h3>
+<div class="pl-4">
+<button class="w-full p-4 rounded-xl bg-primary text-white shadow-md shadow-primary/20 transition-all text-left group">
+<div class="flex items-center gap-3 w-full">
+<span class="material-symbols-outlined text-lg">play_circle</span>
+<span class="text-sm font-bold flex-1">Video: Khái niệm số nguyên tố - 05:20</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Week Info Section (Now second) -->
+<div class="px-4 py-2 mb-2">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Tuần học 11: Số nguyên tố</h2>
+<p class="text-xs font-medium text-slate-500 flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+        Thời gian: 11/03/2026 - 17/03/2026
+    </p>
+</div>
+<!-- Progress Section (Remains at bottom) -->
+<div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4 px-4 pb-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">group</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-0.5">Tiến độ lớp học</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">25 / 32 bạn đã hoàn thành</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-600">
+<span class="material-symbols-outlined text-lg">star</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-0.5">Thành tích cao nhất</p>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">10 điểm</p>
+</div>
+</div>
+</div></div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Floating Action Button for Mobile Feedback -->
+<button class="fixed bottom-8 right-8 size-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center lg:hidden hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</body></html>
+
+Trang file content ứng với content_type là FILE:
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#9a3412",
+                    "primary-fixed": "#ffedd5",
+                    "error": "#ef4444",
+                    "primary": "#f27f0d",
+                    "primary-dim": "#7e3e00",
+                    "on-surface-variant": "#475569",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#f1f5f9",
+                    "secondary-dim": "#764400",
+                    "on-secondary-fixed": "#0f172a",
+                    "on-secondary": "#ffffff",
+                    "surface": "#ffffff",
+                    "on-tertiary-container": "#0369a1",
+                    "on-error-container": "#991b1b",
+                    "on-background": "#0f172a",
+                    "surface-container-low": "#fbfbfd",
+                    "surface-variant": "#f1f5f9",
+                    "outline": "#e2e8f0",
+                    "on-primary-container": "#92400e",
+                    "tertiary-dim": "#644c00",
+                    "inverse-primary": "#fbbf24",
+                    "surface-container": "#f8f9fa",
+                    "inverse-on-surface": "#fbfbfd",
+                    "error-container": "#fee2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e9ecef",
+                    "on-secondary-container": "#1e293b",
+                    "on-primary-fixed": "#7c2d12",
+                    "outline-variant": "#cbd5e1",
+                    "surface-container-high": "#f1f3f5",
+                    "tertiary": "#0ea5e9",
+                    "primary-container": "#fef3c7",
+                    "primary-fixed-dim": "#fed7aa",
+                    "tertiary-container": "#e0f2fe",
+                    "on-tertiary-fixed": "#082f49",
+                    "error-dim": "#b92902",
+                    "inverse-surface": "#1d1d1f",
+                    "tertiary-fixed": "#bae6fd",
+                    "tertiary-fixed-dim": "#7dd3fc",
+                    "secondary-fixed-dim": "#cbd5e1",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#e2e8f0",
+                    "surface-tint": "#f27f0d",
+                    "surface-dim": "#fbfbfd",
+                    "secondary": "#475569",
+                    "on-tertiary-fixed-variant": "#0369a1",
+                    "on-surface": "#0f172a",
+                    "background": "#fbfbfd",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#334155",
+                    "surface-bright": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased">
+<!-- TopNavBar - Simplified -->
+<header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border-b border-outline/30 sticky top-0 z-50">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<div class="text-2xl font-bold tracking-tighter text-orange-600">
+                iX
+            </div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<span class="text-slate-400 font-medium text-xs hidden lg:inline">Học tập là hạt giống của hạnh phúc</span>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-400 hover:text-orange-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline/50 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="User Avatar Profile Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCImCIpSIxl9UBlZhZjDBWYO2Cp2xQCYN3GK2xo6KOAr9RzTdYykc80jclQl1RYwx_UrA_RnAd6guN-aOJxyRrkqvig5hbKrmpgx19EwzAS6End-fuY56Xe29oJNkXJBn1hIDRb9wx5IdBD1dpAQGpJHYqeQM_R44FMURjTYaflaOi9eppRE8-4A1cSd_eg8lqOOM-jPYnxyvb4UcHICCtCr2REDYouEp5bVekqPwyzy2MUDtOYD4suharA_CwcpkT7VLfYIE1mDKA"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-12 pb-24">
+<!-- New Class Identity & Navigation Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-center gap-8">
+<!-- Navigation Button -->
+<button class="bg-primary hover:bg-primary-dim text-white px-8 py-3 rounded-full font-bold transition-all active:scale-95 text-sm tracking-wide shadow-lg shadow-orange-500/10 w-fit">
+                    Về trang tuần học
+                </button>
+<!-- Class Identity -->
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20 bg-surface shadow-sm shrink-0">
+<img class="w-full h-full object-cover" data-alt="6th grade math class icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdjDrXF84QOCOp05-ntmUdfASnoLGU1AlbY6gCv6uzPNdV8BYryNdjtA-Gm0M3sidRzLtQpzDJlyOGB4GAyGIZynW5xHAJzPu4WDSzj4qzxGHlOKFYYRxg4ma6Eghi7jrnmZtBq9WmvFPv-aD2ApnTM0iN2olRRTDE_FElGVK3yhEEFtlUdejyCbq9tNkiApJf_HsBG59oHJwIlSeRicDZPJNwKlQKRxdUcx2HeeTcqUnlnr316t5UCav8XZMmB7t_3uV0ezHJBKU"/>
+</div>
+<div class="flex flex-col">
+<h2 class="text-on-background font-bold text-xl leading-tight">Lớp 6A1: Toán lớp 6 nâng cao</h2>
+<span class="text-on-tertiary-fixed-variant italic text-sm font-medium">Học tập sáng tạo, bứt phá tư duy</span>
+</div>
+</div>
+</div>
+<!-- Updated Assignment Header -->
+</section>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<!-- Left Column: Assignment Details -->
+<div class="lg:col-span-7 space-y-8">
+<div class="bg-surface p-8 lg:p-12 rounded-2xl border border-outline/50 shadow-sm transition-all hover:shadow-md">
+<div class="space-y-8"><div class="mb-8 space-y-3 border-b border-outline/10 pb-8">
+<div class="text-primary text-[16px] font-bold tracking-[0.1em] uppercase">
+                    B. BTVN CHUNG CỦA LỚP
+                </div>
+<h1 class="text-2xl font-bold tracking-tight text-on-background">
+                    Bài tập tự luận Tuần 11: Số nguyên tố
+                </h1>
+<p class="text-secondary text-sm font-medium tracking-wide">
+                    11/03/2026 - 17/03/2026
+                </p>
+</div>
+<!-- PDF Download Area -->
+<div class="flex items-center gap-5 p-6 bg-error/5 rounded-xl border border-error/10 w-fit">
+<span class="material-symbols-outlined text-5xl text-error" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+<div class="flex flex-col">
+<a class="text-on-background font-bold hover:text-error transition-colors text-xl" href="#">
+                                    Tải về đề bài (.pdf)
+                                </a>
+<span class="text-secondary text-xs uppercase tracking-widest font-semibold mt-1">Tài liệu đính kèm</span>
+</div>
+</div>
+<hr class="border-outline/20"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-[0.15em]">Tiến độ lớp học</p>
+<p class="text-lg font-bold text-on-background">25 / 32 bạn đã hoàn thành</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-[0.15em]">Thành tích cao nhất</p>
+<p class="text-lg font-bold text-on-background">10 điểm</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tip Section -->
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline/30 flex items-start gap-6">
+<div class="shrink-0 mt-1">
+<span class="material-symbols-outlined text-2xl text-primary">lightbulb</span>
+</div>
+<p class="text-secondary text-sm leading-relaxed">
+<strong class="text-on-background font-bold">Lưu ý:</strong> Hãy trình bày bài làm rõ ràng trên giấy kẻ ngang. Chụp ảnh đủ sáng và không bị mờ để thầy cô dễ dàng chấm bài cho con nhé!
+                    </p>
+</div>
+</div>
+<!-- Right Column: Submission Card -->
+<div class="lg:col-span-5">
+<div class="bg-surface p-8 lg:p-10 rounded-2xl border border-outline shadow-xl shadow-slate-200/50 sticky top-28">
+<h2 class="text-2xl font-bold text-on-background mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[28px]">cloud_upload</span>
+                        Nộp bài làm của con
+                    </h2>
+<div class="space-y-6">
+<!-- Upload Area -->
+<div class="relative group">
+<label class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-outline/60 rounded-xl bg-surface-container-low hover:bg-primary-container/10 hover:border-primary transition-all cursor-pointer">
+<div class="flex flex-col items-center justify-center text-center px-6">
+<div class="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">upload_file</span>
+</div>
+<p class="mb-2 text-sm text-on-background font-bold">
+                                        Click để chọn ảnh hoặc kéo thả file vào đây
+                                    </p>
+<p class="text-xs text-secondary font-medium mt-2">
+                                        Hỗ trợ nộp nhiều file ảnh (JPG, PNG) hoặc PDF
+                                    </p>
+</div>
+<input class="hidden" multiple="" type="file"/>
+</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold text-lg shadow-lg shadow-orange-500/20 hover:bg-primary-dim transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Nộp bài tập</span>
+</button>
+<div class="flex flex-col gap-3 mt-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">verified_user</span>
+<p class="text-[11px] text-secondary leading-tight font-medium">
+                                    Bài làm sẽ được hệ thống mã hóa bảo mật và chuyển trực tiếp tới giáo viên chủ nhiệm.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer - Minimal Steve Jobs Style -->
+<footer class="pb-16 px-6">
+<div class="max-w-7xl mx-auto border-t border-outline/20 pt-10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-2xl font-extrabold tracking-tighter text-slate-200">iX</div>
+<div class="flex gap-10">
+<a class="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary transition-colors" href="#">Điều khoản</a>
+<a class="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary transition-colors" href="#">Hỗ trợ</a>
+<a class="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-primary transition-colors" href="#">Bản quyền 2024</a>
+</div>
+</div>
+</footer>
+</body></html>
+
+Trang quiz test ứng vói content_type là QUIZ_TEST:
+  <!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Làm bài kiểm tra - iX Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#082f49",
+                        "secondary-fixed-dim": "#cbd5e1",
+                        "on-secondary-fixed": "#0f172a",
+                        "surface-tint": "#f27f0d",
+                        "inverse-surface": "#1d1d1f",
+                        "tertiary-container": "#e0f2fe",
+                        "on-error-container": "#991b1b",
+                        "primary-fixed-dim": "#fed7aa",
+                        "on-surface": "#0f172a",
+                        "on-secondary-fixed-variant": "#334155",
+                        "secondary": "#475569",
+                        "tertiary-fixed-dim": "#7dd3fc",
+                        "tertiary-dim": "#644c00",
+                        "on-tertiary-fixed-variant": "#0369a1",
+                        "on-primary-fixed-variant": "#9a3412",
+                        "surface-container-low": "#fbfbfd",
+                        "on-background": "#0f172a",
+                        "tertiary-fixed": "#bae6fd",
+                        "inverse-primary": "#fbbf24",
+                        "surface-variant": "#f1f5f9",
+                        "surface-dim": "#fbfbfd",
+                        "secondary-fixed": "#e2e8f0",
+                        "secondary-dim": "#764400",
+                        "primary-container": "#fef3c7",
+                        "surface-container": "#f8f9fa",
+                        "surface-bright": "#ffffff",
+                        "error-container": "#fee2e2",
+                        "primary-fixed": "#ffedd5",
+                        "on-tertiary-container": "#0369a1",
+                        "surface-container-highest": "#e9ecef",
+                        "inverse-on-surface": "#fbfbfd",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#f1f3f5",
+                        "background": "#fbfbfd",
+                        "on-surface-variant": "#475569",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ef4444",
+                        "tertiary": "#0ea5e9",
+                        "surface": "#ffffff",
+                        "on-primary-fixed": "#7c2d12",
+                        "on-primary-container": "#92400e",
+                        "primary-dim": "#7e3e00",
+                        "error-dim": "#b92902",
+                        "secondary-container": "#f1f5f9",
+                        "outline-variant": "#cbd5e1",
+                        "outline": "#e2e8f0",
+                        "primary": "#f27f0d",
+                        "on-secondary-container": "#1e293b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbfbfd;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<header class="bg-white/70 backdrop-blur-md sticky top-0 z-50 shadow-[0_20px_25px_-5px_rgba(242,127,13,0.05)] border-none">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-orange-600">iX</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden md:block text-slate-500 font-medium text-sm">Học tập là hạt giống của hạnh phúc</span>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:text-orange-500 transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-sm">
+<img alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLVTV3zzn2hqmX-_jSn6u6FNIcqatAjXMJSfWwkuvwQF6XsTKZmMfghkXokmiRKQeoufK7rdi6AOB3spRJ0Nhd60cBtJxw7xXu4SNoQXWB5qw-GKA5tVEsX59o_kDQarM82s-dCbXjefay5FAoMO_mrg526POD_tlFrJ8LDl8OV5aCYn8qzHqWyGDKui8_FvxlQgFTQra9ibv0L1vwd06lVAcRoypFGYCafhkO_kGTX2RFnELmvcOCKLeACZrXmtFMHUAA6hndifs"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-8">
+<div class="bento-grid">
+<!-- Left Column: Main Content (Wider) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<h2 class="text-3xl font-bold text-on-surface mb-6">Bài kiểm tra trắc nghiệm số nguyên tố</h2>
+<!-- Question 1 -->
+<div class="bg-surface rounded-xl p-8 border border-outline/20 shadow-sm">
+<div class="flex items-start gap-4 mb-6">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sm font-bold text-slate-600">1</span>
+<h4 class="text-lg font-medium leading-relaxed">Trong các số sau đây, số nào là số nguyên tố lớn nhất nhỏ hơn 20?</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 ml-12">
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q1" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">A. 15</span>
+</label>
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group bg-primary/5 border-primary/20">
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q1" type="radio"/>
+<span class="ml-4 text-primary font-bold">B. 19</span>
+</label>
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q1" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">C. 17</span>
+</label>
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q1" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">D. 21</span>
+</label>
+</div>
+</div>
+<!-- Question 2 -->
+<div class="bg-surface rounded-xl p-8 border border-outline/20 shadow-sm">
+<div class="flex items-start gap-4 mb-6">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sm font-bold text-slate-600">2</span>
+<h4 class="text-lg font-medium leading-relaxed">Tính tổng của tất cả các số nguyên tố có một chữ số.</h4>
+</div>
+<div class="ml-12 max-w-md">
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary transition-all text-lg font-semibold" placeholder="Nhập đáp án của bạn..." type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-slate-300" data-icon="edit_note">edit_note</span>
+</div>
+</div>
+<p class="mt-3 text-xs text-slate-400 italic">Lưu ý: Chỉ nhập giá trị số.</p>
+</div>
+</div>
+<!-- Question 3 -->
+<div class="bg-surface rounded-xl p-8 border border-outline/20 shadow-sm">
+<div class="flex items-start gap-4 mb-6">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sm font-bold text-slate-600">3</span>
+<div>
+<h4 class="text-lg font-medium leading-relaxed mb-4">Dựa vào bảng phân tích thừa số nguyên tố dưới đây, hãy xác định số cần tìm:</h4>
+<img alt="Mathematical formula" class="rounded-xl w-full max-h-64 object-cover mb-6 border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Zyh1rBiw5rXrtKpJxBwBCuEZOusABePJ7oXk0NQZltqbRQq7mSovsqmyxpAeY4llRqPVxISgoSxAqXQotCPtQKnIq413_RjWuFKcz-NgCWYH7Me-TEb8OQTgJGvdYj7uaIDlJpHOhE-whoHheaXJP0MUxEMm3MQ8oCQvFz8mpucbb__jC9_guzd5M_drxuCMd3TV_l5ygui9rZCWgp0T2nJr9pXT6_hWQ7VkjoZgPl03mD-cOBrbtwJH9LNqLARe3CdeyZzpR7A"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 ml-12">
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q3" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">A. 120</span>
+</label>
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q3" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">B. 210</span>
+</label>
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q3" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">C. 150</span>
+</label>
+<label class="flex items-center p-4 border border-outline rounded-lg cursor-pointer hover:border-primary/50 transition-all group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-slate-300" name="q3" type="radio"/>
+<span class="ml-4 text-on-surface font-medium">D. 180</span>
+</label>
+</div>
+</div>
+<!-- Question 4 -->
+<div class="bg-surface rounded-xl p-8 border border-outline/20 shadow-sm">
+<div class="flex items-start gap-4 mb-6">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sm font-bold text-slate-600">4</span>
+<h4 class="text-lg font-medium leading-relaxed">Có bao nhiêu số nguyên tố nằm trong khoảng từ 50 đến 100?</h4>
+</div>
+<div class="ml-12">
+<div class="bg-slate-50 p-1 rounded-xl flex items-center gap-2 max-w-xs">
+<input class="flex-1 bg-transparent border-none rounded-lg px-4 py-3 focus:ring-0 text-xl font-bold text-center" placeholder="00" type="number"/>
+<div class="px-4 py-2 bg-white rounded-lg shadow-sm font-bold text-slate-400">Đơn vị: số</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Control -->
+<div class="flex justify-between items-center pt-8">
+<button class="flex items-center gap-2 px-6 py-3 text-slate-500 font-bold hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                    Câu trước
+                </button>
+<button class="flex items-center gap-2 px-8 py-3 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all active:scale-95">
+                    Câu tiếp theo
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Header Card (Info) -->
+<div class="bg-surface rounded-xl p-8 shadow-[0_20px_25px_-5px_rgba(242,127,13,0.05)] border border-outline/20">
+<a class="inline-flex items-center gap-2 px-5 py-2 bg-primary text-white font-bold rounded-full shadow-sm hover:bg-primary-dim transition-all active:scale-95 text-xs mb-8" href="#">
+<span class="material-symbols-outlined text-base" data-icon="arrow_back">arrow_back</span>Về trang tuần học
+                </a>
+<div class="flex items-center gap-5 mb-6">
+<div class="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="functions" style="font-variation-settings: 'FILL' 1;">functions</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight text-on-surface">Lớp 6A1: Toán lớp 6 nâng cao</h1>
+<p class="text-sm text-slate-500 mt-1">Học tập sáng tạo, bứt phá tư duy</p>
+</div>
+</div>
+<div class="space-y-4 pt-6 border-t border-slate-100">
+<div>
+<p class="text-sm font-bold text-primary">C. Chuẩn bị bài trước khi đi học</p>
+</div>
+<div>
+<p class="text-on-surface font-semibold text-lg">Bài tập tự luận Tuần 11: Số nguyên tố</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">THỜI GIAN:</span>
+<p class="text-slate-600 text-sm">11/03/2026 - 17/03/2026</p>
+</div>
+</div>
+<div class="my-6 border-t border-slate-100"></div>
+<div class="space-y-6">
+<div>
+<span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase block mb-1">TIẾN ĐỘ LỚP HỌC</span>
+<p class="text-on-surface font-bold text-lg">25 / 32 bạn đã hoàn thành</p>
+</div>
+<div>
+<span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase block mb-1">THÀNH TÍCH CAO NHẤT</span>
+<p class="text-primary font-bold text-lg">10 điểm</p>
+</div>
+</div>
+</div>
+<!-- Status & Timer Card -->
+<div class="bg-primary rounded-xl p-6 text-on-primary shadow-lg sticky top-24">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-lg font-bold">Bài kiểm tra trắc nghiệm</h3>
+<span class="text-xs text-white/80">Thời gian làm bài: 15 phút</span>
+</div>
+<span class="material-symbols-outlined text-3xl opacity-80" data-icon="timer">timer</span>
+</div>
+<div class="text-center py-4 bg-white/10 rounded-lg backdrop-blur-sm">
+<span class="text-4xl font-extrabold tracking-widest">12:45</span>
+<p class="text-[10px] font-bold tracking-[0.2em] uppercase mt-1 opacity-80 text-white">ĐANG CHẠY</p>
+</div>
+<button class="w-full mt-6 bg-white text-primary font-bold py-3 rounded-full hover:bg-slate-50 transition-all active:scale-95 shadow-md">
+                    Nộp bài
+                </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Aesthetic Floating Footer Element -->
+<div class="fixed bottom-6 right-6 hidden md:block">
+<div class="bg-white/70 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-white flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs font-bold text-slate-600 tracking-tight uppercase">Hệ thống đã lưu bài 10 giây trước</span>
+</div>
+</div>
+</body></html>

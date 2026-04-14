@@ -1,0 +1,10 @@
+/*src/features/student/pages/StudentHomePage.css*/
+.student-home-page {
+  min-height: 100vh;
+  background: #fbfbfd;
+  color: #0f172a;
+}
+
+.student-home-page__main {
+  display: block;
+}

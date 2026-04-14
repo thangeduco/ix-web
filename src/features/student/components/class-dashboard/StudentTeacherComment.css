@@ -1,0 +1,91 @@
+/*src/features/student/components/class-dashboard/StudentTeacherComment.css*/
+.student-dashboard-body__teacher-comment {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 243, 224, 0.7);
+  border: 1px solid rgba(251, 191, 36, 0.16);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.student-dashboard-body__teacher-comment::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: -24px;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: rgba(242, 127, 13, 0.06);
+}
+
+.student-dashboard-body__teacher-icon {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: rgba(242, 127, 13, 0.14);
+  color: #f27f0d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.student-dashboard-body__teacher-content {
+  position: relative;
+  z-index: 1;
+}
+
+.student-dashboard-body__section-label {
+  margin-bottom: 8px;
+  color: #9a3412;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.student-dashboard-body__teacher-text {
+  margin: 0;
+  color: #7c2d12;
+  font-size: 1rem;
+  line-height: 1.9;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.student-dashboard-body__empty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 36px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px dashed rgba(203, 213, 225, 0.9);
+  text-align: center;
+}
+
+.student-dashboard-body__empty-card .material-symbols-outlined {
+  font-size: 42px;
+  color: #f27f0d;
+}
+
+.student-dashboard-body__empty-card h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.student-dashboard-body__empty-card p {
+  margin: 0;
+  max-width: 520px;
+  color: #64748b;
+  line-height: 1.8;
+}
